@@ -21,6 +21,8 @@ So, to implement my own LAMPs, I chose two different approaches. I have worked w
 - MySQL, implemented on Ubuntu
 - Microsoft SQL Server (MSSQL), implemented on CentOS
 
+Let's start stacking, then!
+
 ## Table of Contents
 
 1. [Ubuntu 20.04 / MySQL LAMP](#1)
