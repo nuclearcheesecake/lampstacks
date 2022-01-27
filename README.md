@@ -1,7 +1,7 @@
 # Building LAMP stacks as basic web servers
 
 <p align="center">
-  <img width="275" src="https://github.com/nuclearcheesecake/lampstacks/blob/main/images/lamp.jpg">
+  <img width="275" src="https://github.com/nuclearcheesecake/lampstacks/blob/main/images/intro.jpg">
 </p>
 
 <p align="center">
