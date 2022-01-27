@@ -1,14 +1,20 @@
 # Building LAMP stacks as basic web servers
 
 <p align="center">
-  <img width="275" src="https://github.com/nuclearcheesecake/lampstacks/blob/main/images/intro.jpg">
+  <img width="350" src="https://github.com/nuclearcheesecake/lampstacks/blob/main/images/intro.jpg">
 </p>
+
+Explain what a lamp is
+
+Here is a helpful visual from [this](https://www.liquidweb.com/kb/what-is-a-lamp-stack/) website, which also provides some further reading. It is rather helpful to understand the architecture used to create a LAMP stack.
 
 <p align="center">
   <img width="300" src="https://github.com/nuclearcheesecake/lampstacks/blob/main/images/expl.jpg">
 </p>
 
-Explanation
+So, to implement my own LAMPs, I chose two different approaches. I have worked with Oracle database and PL/SQL extensively during my studies, thus I branched out to use two types of databases I previously only dabbled in. I also used this chance to work with Linux distributions I have not had much experience with. The two LAMPs I built thus used:
+- MySQL, implemented on Ubuntu
+- Microsoft SQL Server (MSSQL), implemented on CentOS
 
 ## Table of Contents
 
