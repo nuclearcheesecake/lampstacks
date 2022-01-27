@@ -4,20 +4,20 @@
   <img width="350" src="https://github.com/nuclearcheesecake/lampstacks/blob/main/images/intro.jpg">
 </p>
 
-Explain what a lamp is
+Working with back-end technology often requires a programmer to find ways to help servers talk to websites, while wrangling data that could provide insight to companies. A LAMP stack is a configuration of different technologies that simplifies this process, allowing data to flow from databases onto webpages, with scripting power to manipulate outputs. To create a LAMP stack, you would need some variation of the following:
 
-- L
-- A
-- M
-- P
+- L - A Linux distribution, to run everything on
+- A - Apache HTTP web server, to speak to the web
+- M - MySQL/MSSQL/Some other database, to store relevant information
+- P - PHP/Python, to create useful scripts to work with the data and websites
 
-Here is a helpful visual from [this](https://www.liquidweb.com/kb/what-is-a-lamp-stack/) website, which also provides some further reading. It is rather helpful to understand the architecture used to create a LAMP stack.
+Here is a helpful visual from [this](https://www.liquidweb.com/kb/what-is-a-lamp-stack/) website, which also provides some further reading. The image is rather helpful to understand the architecture used to create a LAMP stack, and how it all fits together:
 
 <p align="center">
   <img width="325" src="https://github.com/nuclearcheesecake/lampstacks/blob/main/images/expl.jpg">
 </p>
 
-So, to implement my own LAMPs, I chose two different approaches. I have worked with Oracle database and PL/SQL extensively during my studies, thus I branched out to use two types of databases I previously only dabbled in. I also used this chance to work with Linux distributions I have not had much experience with. The two LAMPs I built thus used:
+So, to implement my own LAMPs, I chose two different approaches. I have worked with Oracle databases and PL/SQL extensively during my studies, thus I branched out to use two types of databases I previously only dabbled in. I also used this chance to work with two new Linux distributions. The LAMPs I built thus used:
 - MySQL, implemented on Ubuntu
 - Microsoft SQL Server (MSSQL), implemented on CentOS
 
