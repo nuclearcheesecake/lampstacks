@@ -6,10 +6,15 @@
 
 Explain what a lamp is
 
+- L
+- A
+- M
+- P
+
 Here is a helpful visual from [this](https://www.liquidweb.com/kb/what-is-a-lamp-stack/) website, which also provides some further reading. It is rather helpful to understand the architecture used to create a LAMP stack.
 
 <p align="center">
-  <img width="300" src="https://github.com/nuclearcheesecake/lampstacks/blob/main/images/expl.jpg">
+  <img width="325" src="https://github.com/nuclearcheesecake/lampstacks/blob/main/images/expl.jpg">
 </p>
 
 So, to implement my own LAMPs, I chose two different approaches. I have worked with Oracle database and PL/SQL extensively during my studies, thus I branched out to use two types of databases I previously only dabbled in. I also used this chance to work with Linux distributions I have not had much experience with. The two LAMPs I built thus used:
