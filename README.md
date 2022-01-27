@@ -42,14 +42,50 @@ Let's start stacking, then!
 <a name="2"></a>
 ## 2. 1.1 List of installed packages
 
+For Ubuntu, outside of all of the dependencies and the pre-installed Ubuntu packages, these are the ones I installed to work with the LAMP:
+- apache2
+- mysql-server
+- php
+- libapache2-mod-php
+- php-mysql
+
+This is fortunately a rather all-encompassing suite that allowed me to complete all of the following steps. To see how to install and configure these packages, see [here](https://hackernoon.com/how-to-install-and-configure-php-for-apache-and-mysql-wb1m33z1), but it boils down to:
+
+```bash
+sudo apt-get install apache2
+sudo apt-get install mysql-server
+sudo mysql_secure_installation
+sudo apt-get install php libapache2-mod-php php-mysql
+```
+
 <a name="3"></a>
 ## 1.2 Getting Apache to work
+
+```bash
+sudo systemctl start apache2
+sudo systemctl enable apache2
+```
 
 <a name="4"></a>
 ## 1.3 Building the database
 
+```bash
+sudo systemctl start mysql
+sudo systemctl enable mysql
+```
+
 <a name="5"></a>
 ## 1.4 PHP scripting
+
+```bash
+sudo nano /var/www/html/info.php
+```
+
+```php
+<?php
+phpinfo();
+?>
+```
 
 <a name="6"></a>
 # 2. CentOS 7 / Microsoft SQL Server LAMP
