@@ -1,4 +1,4 @@
-# Building LAMP stacks as basic web servers
+# Building LAMP stacks (web server technology)
 
 <p align="center">
   <img width="350" src="https://github.com/nuclearcheesecake/lampstacks/blob/main/images/intro.jpg">
