@@ -40,7 +40,7 @@ Let's start stacking, then!
 # 1. Ubuntu 20.04 / MySQL LAMP
 
 <a name="2"></a>
-## 2. 1.1 List of installed packages
+## 1.1 List of installed packages
 
 For Ubuntu, outside of all of the dependencies and the pre-installed Ubuntu packages, these are the ones I installed to work with the LAMP:
 - apache2
@@ -61,13 +61,35 @@ sudo apt-get install php libapache2-mod-php php-mysql
 <a name="3"></a>
 ## 1.2 Getting Apache to work
 
+To set up our web server, run the following commands
+
 ```bash
 sudo systemctl start apache2
 sudo systemctl enable apache2
+sudo systemctl status apache2
 ```
+
+You should then see the following:
+
+<p align="center">
+  <img width="325" src="https://github.com/nuclearcheesecake/lampstacks/blob/main/images/expl.jpg">
+</p>
+
+This means that your web server is running. Great! We can see the default Apache page in-browser then, by typing "http://" + your server's local IP, or just "localhost/". It should display like this:
+
+<p align="center">
+  <img width="325" src="https://github.com/nuclearcheesecake/lampstacks/blob/main/images/expl.jpg">
+</p>
+
+We can use Apache's Root Directory to include files that will become other pages on this server. Usually, this directory is /var/www/html/ - any files in here will be processed as part of the web server.
+
 
 <a name="4"></a>
 ## 1.3 Building the database
+
+Now we can work with our data. For this exercise, I have created a database with the following structure:
+
+structure
 
 ```bash
 sudo systemctl start mysql
