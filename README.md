@@ -14,7 +14,7 @@ Working with back-end technology often requires a programmer to find ways to hel
 Here is a helpful visual from [this](https://www.liquidweb.com/kb/what-is-a-lamp-stack/) website, which also provides some further reading. The image is rather helpful to understand the architecture used to create a LAMP stack, and how it all fits together:
 
 <p align="center">
-  <img width="325" src="https://github.com/nuclearcheesecake/lampstacks/blob/main/images/expl.jpg">
+  <img width="415" src="https://github.com/nuclearcheesecake/lampstacks/blob/main/images/expl.jpg">
 </p>
 
 So, to implement my own LAMPs, I chose two different approaches. I have worked with Oracle databases and PL/SQL extensively during my studies, thus I branched out to use two types of databases I previously only dabbled in. I also used this chance to work with two new Linux distributions. The LAMPs I built thus used:
@@ -154,6 +154,7 @@ If we then head over to our webpage, and append the name of the file (thus searc
 This is, however useful to the programmer to see, not much to look at for a general use. I have thus written the following script to add more valuable information to the server:
 
 ```bash
+sudo nano /var/www/html/test.php
 
 ```
 
@@ -214,7 +215,7 @@ Note that here, only one sale is recorded. If we however add the sale made above
 We can also make a few large sales to push up the commission in order to change the top-selling salesperson:
 
 <p align="center">
-  <img width="450" src="https://github.com/nuclearcheesecake/lampstacks/blob/main/images/image%20(17).png">
+  <img width="450" src="https://github.com/nuclearcheesecake/lampstacks/blob/main/images/imaage.png">
 </p>
 
 <a name="6"></a>
