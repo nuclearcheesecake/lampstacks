@@ -123,20 +123,99 @@ We can also observe that when a sale is made, the triggers fire:
   <img width="450" src="https://github.com/nuclearcheesecake/lampstacks/blob/main/images/image%20(20).png">
 </p>
 
-
+Above, Josh has sold 1 rubber wheelchair.
 
 <a name="5"></a>
 ## 1.4 PHP scripting
 
+Now that we have data, we need some way to display it on our Apache web server. Firsly, we can create a script as follows to display information on the PHP we are using on this system:
+
 ```bash
 sudo nano /var/www/html/info.php
 ```
+
+Inside of this file, we put:
 
 ```php
 <?php
 phpinfo();
 ?>
 ```
+
+If we then head over to our webpage, and append the name of the file (thus search for "localhost/info.php") we see the following:
+
+<p align="center">
+  <img width="450" src="https://github.com/nuclearcheesecake/lampstacks/blob/main/images/image%20(14).png">
+</p>
+<p align="center">
+  <img width="450" src="https://github.com/nuclearcheesecake/lampstacks/blob/main/images/image%20(15).png">
+</p>
+
+This is, however useful to the programmer to see, not much to look at for a general use. I have thus written the following script to add more valuable information to the server:
+
+```bash
+
+```
+
+Inside of this file:
+
+```php
+<?php
+
+$conn = new mysqli("localhost", "root", "SQl777@@@", "rftest");
+
+if($conn->connect_error) {
+	die("ERROR - cannot connect: " . $conn->connect_error);
+}
+
+echo 'Connected to database.<br>';
+
+$result = $conn->query("SELECT sm_fullname FROM salesman");
+
+echo "<br>Number of salesmen: $result->num_rows<br>";
+
+$result = $conn->query("SELECT prod_id FROM product");
+
+echo "Number of products: $result->num_rows<br>";
+
+$result = $conn->query("SELECT sale_id FROM sale");
+
+echo "Number of sales: $result->num_rows<br>";
+
+$result = $conn->query("SELECT * FROM salesman WHERE (sm_commission) IN (SELECT MAX(sm_commission) from salesman)");
+
+echo "<br>Top-selling salesman with commission:<br>";
+
+if ($result->num_rows > 0) {
+while($row = $result->fetch_assoc() ){
+	echo $row["sm_fullname"] ." earning £" .$row["sm_commission"];
+}
+}
+
+$result->close();
+
+$conn->close();
+
+?>
+```
+
+When we thus go to "localhost/test.php", we can see the result:
+
+<p align="center">
+  <img width="450" src="https://github.com/nuclearcheesecake/lampstacks/blob/main/images/image%20(18).png">
+</p>
+
+Note that here, only one sale is recorded. If we however add the sale made above (Josh's rubber wheelchair) we see the counter update:
+
+<p align="center">
+  <img width="450" src="https://github.com/nuclearcheesecake/lampstacks/blob/main/images/image%20(21).png">
+</p>
+
+We can also make a few large sales to push up the commission in order to change the top-selling salesperson:
+
+<p align="center">
+  <img width="450" src="https://github.com/nuclearcheesecake/lampstacks/blob/main/images/image%20(17).png">
+</p>
 
 <a name="6"></a>
 # 2. CentOS 7 / Microsoft SQL Server LAMP
