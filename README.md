@@ -31,10 +31,10 @@ Let's start stacking, then!
   - 1.3 [Building the database](#4)
   - 1.4 [PHP scripting](#5)
 2. [CentOS 7 / Microsoft SQL Server LAMP](#6)
-  - 2.1 [List of installed packages](#7)
-  - 2.2 [Getting Apache to work](#8)
-  - 2.3 [Building the database](#9)
-  - 2.4 [PHP scripting](#10)
+  - 2.1 [List of installed packages and getting Apache to work](#7)
+  - 2.2 [Building the database](#9)
+  - 2.3 [PHP scripting](#10)
+3. [Conclusion](#11)
 
 <a name="1"></a>
 # 1. Ubuntu 20.04 / MySQL LAMP
@@ -222,14 +222,33 @@ We can also make a few large sales to push up the commission in order to change 
 # 2. CentOS 7 / Microsoft SQL Server LAMP
 
 <a name="7"></a>
-## 2.1 List of installed packages
+## 2.1 List of installed packages and getting Apache to work
 
-<a name="8"></a>
-## 2.2 Getting Apache to work
+The process is mostly the same as for Ubuntu, but there are certain packages that would be different, as well as the process of installing them. The main packages would be:
+- httpd
+- SEARCH HOW YOU INSTALLED MSSQL
+
+In the end, you want to run the following:
+
+```bash
+sudo systemctl start httpd
+sudo systemctl enable httpd
+```
+
+And then see, as above, that the server is running and displaying:
+
+<p align="center">
+  <img width="450" src="https://github.com/nuclearcheesecake/lampstacks/blob/main/images/image.png">
+</p>
+
+<p align="center">
+  <img width="450" src="https://github.com/nuclearcheesecake/lampstacks/blob/main/images/image%20(3).png">
+</p>
 
 <a name="9"></a>
-## 2.3 Building the database
+## 2.2 Building the database
 
+The database is the same as above.
 
 The triggers were created as:
 
@@ -264,5 +283,8 @@ WHERE sm_ID = @sm_ID;
 ```
 
 <a name="10"></a>
-## 2.4 PHP scripting
+## 2.3 PHP scripting
 
+
+<a name="11"></a>
+# 3. Conclusion
