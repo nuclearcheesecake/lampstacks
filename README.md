@@ -72,13 +72,13 @@ sudo systemctl status apache2
 You should then see the following:
 
 <p align="center">
-  <img width="325" src="https://github.com/nuclearcheesecake/lampstacks/blob/main/images/image (12).jpg">
+  <img width="450" src="https://github.com/nuclearcheesecake/lampstacks/blob/main/images/image%20(12).png">
 </p>
 
 This means that your web server is running. Great! We can see the default Apache page in-browser then, by typing "http://" + your server's local IP, or just "localhost/". It should display like this:
 
 <p align="center">
-  <img width="325" src="https://github.com/nuclearcheesecake/lampstacks/blob/main/images/image (13).jpg">
+  <img width="450" src="https://github.com/nuclearcheesecake/lampstacks/blob/main/images/image%20(13).png">
 </p>
 
 We can use Apache's Root Directory to include files that will become other pages on this server. Usually, this directory is /var/www/html/ - any files in here will be processed as part of the web server.
@@ -87,14 +87,43 @@ We can use Apache's Root Directory to include files that will become other pages
 <a name="4"></a>
 ## 1.3 Building the database
 
-Now we can work with our data. For this exercise, I have created a database with the following structure:
+Now we can work with our data. For this exercise, I have created a database (called "rftest") with the following structure:
 
-structure
+Tables:
+- Sale (sale_ID, prod_ID, sm_ID, sale_quantity, sale_total)
+- Salesman (sm_ID, sm_fullname, sm_commission)
+- Product (prod_ID, prod_name, prod_price, prod_stock)
+
+I also create two triggers:
+- updatestock, so that when a sale is made, the appropriate amount of inventory is deducted from a product's stock in the Product table
+- updatecommission, that increments a salesman's commission by 5% of the sale total
+
+We can see the results below. Firstly, we must start and enable MySQL:
 
 ```bash
 sudo systemctl start mysql
 sudo systemctl enable mysql
 ```
+
+We can then look at what is stored inside of the databse:
+
+<p align="center">
+  <img width="450" src="https://github.com/nuclearcheesecake/lampstacks/blob/main/images/image%20(16).png">
+</p>
+<p align="center">
+  <img width="450" src="https://github.com/nuclearcheesecake/lampstacks/blob/main/images/image%20(17).png">
+</p>
+
+We can also observe that when a sale is made, the triggers fire:
+
+<p align="center">
+  <img width="450" src="https://github.com/nuclearcheesecake/lampstacks/blob/main/images/image%20(19).png">
+</p>
+<p align="center">
+  <img width="450" src="https://github.com/nuclearcheesecake/lampstacks/blob/main/images/image%20(20).png">
+</p>
+
+
 
 <a name="5"></a>
 ## 1.4 PHP scripting
@@ -120,6 +149,39 @@ phpinfo();
 
 <a name="9"></a>
 ## 2.3 Building the database
+
+
+The triggers were created as:
+
+- updatestock
+```sql
+CREATE TRIGGER dbo.updatestock ON dbo.sale FOR INSERT
+AS
+declare @prod_ID int;
+declare @sale_quantity FLOAT (20);
+
+select @prod_ID=i.prod_ID from inserted i;
+select @sale_quantity=i.sale_quantity from inserted i;
+
+UPDATE dbo.product
+SET prod_stock = (SELECT prod_stock from dbo.product where prod_ID = @prod_id) - @sale_quantity
+WHERE prod_ID = @prod_ID;
+```
+
+- updatecommission
+```sql
+CREATE TRIGGER dbo.updatecommission ON dbo.sale FOR INSERT
+AS
+declare @sm_ID int;
+declare @sale_total FLOAT (20);
+
+select @sm_IDint=i.sm_IDint from inserted i;
+select @sale_total=i.sale_total from inserted i;
+
+UPDATE dbo.salesman
+SET sm_commission = (SELECT sm_commission from dbo.salesman where sm_ID= @sm_ID) + 0.05*@sale_total
+WHERE sm_ID = @sm_ID;
+```
 
 <a name="10"></a>
 ## 2.4 PHP scripting
