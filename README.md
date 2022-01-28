@@ -188,9 +188,9 @@ $result = $conn->query("SELECT * FROM salesman WHERE (sm_commission) IN (SELECT 
 echo "<br>Top-selling salesman with commission:<br>";
 
 if ($result->num_rows > 0) {
-while($row = $result->fetch_assoc() ){
-	echo $row["sm_fullname"] ." earning £" .$row["sm_commission"];
-}
+	while($row = $result->fetch_assoc() ){
+		echo $row["sm_fullname"] ." earning £" .$row["sm_commission"];
+	}
 }
 
 $result->close();
