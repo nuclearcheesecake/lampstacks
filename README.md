@@ -226,7 +226,9 @@ We can also make a few large sales to push up the commission in order to change 
 
 The process is mostly the same as for Ubuntu, but there are certain packages that would be different, as well as the process of installing them. The main packages would be:
 - httpd
-- SEARCH HOW YOU INSTALLED MSSQL
+- MSSQL Server for Linux
+- php
+- sqlcmd
 
 In the end, you want to run the following:
 
@@ -248,7 +250,26 @@ And then see, as above, that the server is running and displaying:
 <a name="9"></a>
 ## 2.2 Building the database
 
-The database is the same as above.
+To install and configure MSSQL Server, do the following:
+
+```bash
+sudo curl -o /etc/yum.repos.d/mssql-server.repo https://packages.microsoft.com/config/rhel/7/mssql-server-2019.repo
+sudo yum install -y mssql-server
+sudo /opt/mssql/bin/mssql-conf setup
+systemctl status mssql-server
+```
+
+You should then see that the server is running! Now we need to install a package to help us to work with the database in the command line:
+
+```bash
+sudo curl -o /etc/yum.repos.d/msprod.repo https://packages.microsoft.com/config/rhel/7/prod.repo
+sudo yum install -y mssql-tools unixODBC-devel
+echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bash_profile
+echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bashrc
+source ~/.bashrc
+sqlcmd -S localhost -U SA
+```
+Now we can create the same database as above.
 
 The triggers were created as:
 
@@ -282,9 +303,26 @@ SET sm_commission = (SELECT sm_commission from dbo.salesman where sm_ID= @sm_ID)
 WHERE sm_ID = @sm_ID;
 ```
 
+And here we see the result of our work:
+
+<p align="center">
+  <img width="450" src="https://github.com/nuclearcheesecake/lampstacks/blob/main/images/image%20(10).png">
+</p>
+
 <a name="10"></a>
 ## 2.3 PHP scripting
 
+Similarly, we can now create scripts to work with this data on the server. In the end, I worked with [this API](https://www.easysoft.com/products/data_access/odbc-sql-server-driver/manual/installation.html#856384) to get it working, and you are welcome to explore it further on your own. For now, we can see the same info.php file as created above display on our webpage in CentOS:
+
+<p align="center">
+  <img width="450" src="https://github.com/nuclearcheesecake/lampstacks/blob/main/images/image%20(1).png">
+</p>
+
+<p align="center">
+  <img width="450" src="https://github.com/nuclearcheesecake/lampstacks/blob/main/images/image%20(2).png">
+</p>
 
 <a name="11"></a>
 # 3. Conclusion
+
+We can now effectively communicate with a web server to deliver data that can create meaning for end-users. With a bit of front-end tweaks, you could be capable of a website that looks pretty, but for now you can be proud that you are able to provide streams of information that would give the web service meaning.
