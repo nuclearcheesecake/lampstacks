@@ -72,13 +72,13 @@ sudo systemctl status apache2
 You should then see the following:
 
 <p align="center">
-  <img width="325" src="https://github.com/nuclearcheesecake/lampstacks/blob/main/images/expl.jpg">
+  <img width="325" src="https://github.com/nuclearcheesecake/lampstacks/blob/main/images/image (12).jpg">
 </p>
 
 This means that your web server is running. Great! We can see the default Apache page in-browser then, by typing "http://" + your server's local IP, or just "localhost/". It should display like this:
 
 <p align="center">
-  <img width="325" src="https://github.com/nuclearcheesecake/lampstacks/blob/main/images/expl.jpg">
+  <img width="325" src="https://github.com/nuclearcheesecake/lampstacks/blob/main/images/image (13).jpg">
 </p>
 
 We can use Apache's Root Directory to include files that will become other pages on this server. Usually, this directory is /var/www/html/ - any files in here will be processed as part of the web server.
